@@ -4,13 +4,14 @@
  */
  
 #include "Experiment0.h"
-//#include "Experiment1.h"
+#include "Experiment1.h"
 //#include "Experiment2.h"
 
  int main() {
- 	Experiment0 exp0;
- 	exp0.run();
-// 	Experiment1 exp1;
+ 	// Experiment0 exp0;
+
+	Experiment1 exp1;
+	exp1.run();
 // 	exp1.run();
 // 	Experiment2 exp2;
 // 	exp2.run();

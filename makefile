@@ -1,7 +1,7 @@
 # assignment name (generate executable with this name)
 TARGET = lab7
 # .cpp files that do not contain a main() function.
-SOURCES = Experiment0.cpp
+SOURCES = Experiment1.cpp
 
 CPP       = g++ --std=c++11 -c
 CPPFLAGS   = -Wall -I. -g

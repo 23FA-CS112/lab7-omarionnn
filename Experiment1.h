@@ -14,6 +14,8 @@ class Experiment1 {
     void run();
     void timeAppendToVectorOfSize(unsigned size);
     void timeRepeatedAppendUntilVectorIsSize(unsigned reps);
+    void timeRepeatedAppendUntilListIsSize(unsigned reps);
+    void timeAppendToListOfSize(unsigned size);
 
    private:
     const unsigned REPS = 10000;

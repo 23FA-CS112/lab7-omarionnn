@@ -22,7 +22,16 @@ void Experiment1::run() {
 
     timeRepeatedAppendUntilVectorIsSize(100000);
 
-    cout << "Experiment 1 complete." << endl;
+    cout << "1b. Timing list append operations using the average of " << REPS
+         << " trials..." << endl;
+    timeAppendToListOfSize(10);
+    timeAppendToListOfSize(100);
+    timeAppendToListOfSize(1000);
+    timeAppendToListOfSize(10000);
+    timeAppendToListOfSize(100000);
+
+    timeRepeatedAppendUntilListIsSize(100000);
+    cout <<"Experiment 1 complete."<< endl;
 }
 
 void Experiment1::timeAppendToVectorOfSize(unsigned size) {
@@ -63,4 +72,44 @@ void Experiment1::timeRepeatedAppendUntilVectorIsSize(unsigned reps) {
          //       << myTimer.getTotalTimeInSecs() / (double) reps << " secs"
          << '\n'
          << endl;
+}
+
+void Experiment1::timeAppendToListOfSize(unsigned size){
+    cout << "-- time to append to a full list of size " << setw(8) << size
+         << ":\t" << flush;
+    myTimer.reset();
+    for (unsigned i = 0; i < REPS; i++) {  // repeatedly ...
+        list <int> l(size);                 // construct a new n-size list
+        myTimer.start();                   // start timer
+        l.push_back(i);                    // append an Item
+        myTimer.stop();                    // stop timer
+    }
+    cout << fixed << showpoint  // display average time
+         << myTimer.getTotalTimeInNanos() / (double)REPS
+         << " nsecs"
+         // if you prefer sec, use the next two lines instead of the previous line 
+         //       << setprecision(12)
+         //       << myTimer.getTotalTimeInSecs() / (double) reps << " secs"
+         << endl;
+}
+
+void Experiment1::timeRepeatedAppendUntilListIsSize(unsigned reps){
+    cout << "\n ** average time to append to a list growing from empty to " 
+         "size"
+         <<reps<< ": \n\t" << flush;
+    myTimer.reset();
+    list <unsigned> l;                     // constructing of empty vector 
+    for (unsigned i = 0; i < reps; i++) {  // repeatedly ...              
+        myTimer.start();                   // start timer
+        l.push_back(i);                    // append an Item
+        myTimer.stop();                    // stop timer
+    }
+
+    cout << fixed << showpoint  //display average time  
+    << myTimer.getTotalTimeInNanos() / (double)reps
+    << " nsecs"
+    //       << setprecision(12)
+    //       << myTimer.getTotalTimeInSecs() / (double) reps << " secs"
+    << '\n'
+    << endl;
 }
